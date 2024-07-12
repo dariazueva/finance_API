@@ -1,9 +1,14 @@
-from django.urls import path
-from .views import AccountListCreate, TransactionListCreate, TransactionDelete, TransactionFilteredList
+from rest_framework.routers import DefaultRouter
+from django.urls import path, include
+from .views import (AccountViewSet, TransactionViewSet,
+                    TransactionDeleteView, TransactionFilteredListView)
+
+router = DefaultRouter()
+router.register(r'accounts', AccountViewSet, basename='account')
+router.register(r'transactions', TransactionViewSet, basename='transaction')
 
 urlpatterns = [
-    path("accounts/", AccountListCreate.as_view(), name="account-list-create"),
-    path("transactions/", TransactionListCreate.as_view(), name="transaction-list-create"),
-    path("transactions/<int:id>/", TransactionDelete.as_view(), name="transaction-delete"),
-    path("transactions/filter/", TransactionFilteredList.as_view(), name="transaction-filtered-list"),
+    path('', include(router.urls)),
+    path('transactions/<int:id>/', TransactionDeleteView.as_view(), name='transaction-delete'),
+    path('transactions/filter/', TransactionFilteredListView.as_view(), name='transaction-filtered-list'),
 ]

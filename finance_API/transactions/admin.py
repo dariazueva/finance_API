@@ -15,4 +15,4 @@ class TransactionAdmin(admin.ModelAdmin):
     """Администратор для модели Transaction."""
 
     list_display = ('account_id', 'date', 'amount')
-    list_editable = ('date', 'amount',)
+    list_editable = ('amount',)
