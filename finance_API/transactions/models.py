@@ -8,7 +8,7 @@ class Account(models.Model):
     class Meta:
         verbose_name = 'Счёт'
         verbose_name_plural = 'Счета'
-        ordering = ('name',)
+        ordering = ('id',)
 
     def __str__(self):
         return self.name
@@ -20,9 +20,9 @@ class Account(models.Model):
 
 
 class Transaction(models.Model):
-    account_id = models.ForeignKey(Account,
-                                   on_delete=models.CASCADE,
-                                   verbose_name='Идентификатор счета')
+    account = models.ForeignKey(Account,
+                                on_delete=models.CASCADE,
+                                verbose_name='Идентификатор счета')
     date = models.DateField('Дата создания транзакции',
                             auto_now_add=True)
     amount = models.DecimalField('Сумма операции',
