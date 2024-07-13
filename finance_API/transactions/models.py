@@ -32,6 +32,7 @@ class Transaction(models.Model):
     class Meta:
         verbose_name = 'Операция'
         verbose_name_plural = 'Операции'
+        ordering = ('-date',)
 
     def __str__(self):
-        return f"Transaction of {self.account_id.name} on {self.date}"
+        return f"Transaction of {self.account.name} on {self.date}"
