@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Account(models.Model):
+    """Модель 'Счёт'."""
+
     name = models.CharField('Название счета',
                             max_length=100)
 
@@ -20,6 +22,8 @@ class Account(models.Model):
 
 
 class Transaction(models.Model):
+    """Модель 'Операция'."""
+
     account = models.ForeignKey(Account,
                                 on_delete=models.CASCADE,
                                 verbose_name='Идентификатор счета')

@@ -2,6 +2,8 @@ from django.contrib import admin
 
 from .models import Account, Transaction
 
+admin.site.empty_value_display = 'Не задано'
+
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
