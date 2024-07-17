@@ -20,10 +20,8 @@ python, django, docker, postgresql, django rest framework
 #### Создайте директорию foodgram .
 ```bash
 mkdir finance_API
-cd finance_API
+cd finance_API/finance_API/
 ```
-#### Скачайте или скопируйте файл docker-compose.yml из этого репозитория.
-
 #### Создайте файл .env и заполните его своими данными по образцу.
 ```bash
 POSTGRES_USER=financeuser
