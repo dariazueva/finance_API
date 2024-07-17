@@ -1,0 +1,26 @@
+version: '3.8'
+
+volumes:
+  postgres_data:
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: finance
+      POSTGRES_USER: financeuser
+      POSTGRES_PASSWORD: financepass
+    ports:
+      - "6432:5432"
+
+  backend:
+    build: .
+    env_file: .env
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
