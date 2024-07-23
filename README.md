@@ -17,10 +17,16 @@ python, django, docker, postgresql, django rest framework
 
 ### Как запустить проект с помощью Docker:
 
-#### Создайте директорию foodgram .
+#### Создайте директорию finance_API.
 ```bash
 mkdir finance_API
-cd finance_API/finance_API/
+cd finance_API/
+```
+#### Cоздать и активировать виртуальное окружение:
+```bash
+python -m venv venv
+source venv/Scripts/activate
+cd finance_API/
 ```
 #### Создайте файл .env и заполните его своими данными по образцу.
 ```bash
@@ -30,7 +36,6 @@ POSTGRES_DB=finance
 DB_HOST=db
 DB_PORT=5432
 SECRET_KEY = "ваш-секретный-ключ"
-
 ```
 #### Запустите систему контейнеров.
 ```bash
@@ -43,6 +48,10 @@ docker-compose exec backend python manage.py migrate
 #### Создайте суперпользователя.
 ```bash
 docker-compose exec backend python manage.py createsuperuser
+```
+#### Запустите тесты.
+```bash
+docker-compose exec backend python manage.py test
 ```
 #### Остановить контейнер.
 ```bash

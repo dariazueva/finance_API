@@ -9,7 +9,7 @@ admin.site.empty_value_display = 'Не задано'
 class AccountAdmin(admin.ModelAdmin):
     """Администратор для модели Account."""
 
-    list_display = ('name', 'balance')
+    list_display = ('name',)
 
 
 @admin.register(Transaction)
